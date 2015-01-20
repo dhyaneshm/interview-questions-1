@@ -1,0 +1,113 @@
+form fieldset {
+	border: 0 none;
+}
+form fieldset legend {
+	color: #333;
+	text-transform: uppercase;
+}
+form input.text,
+form textarea.text {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	box-shadow: inset 1px 1px 2px #eee;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #333;
+	display: block;
+	outline: 0 none;
+	padding: 6px 8px;
+	width: 100%;
+	-webkit-transition: all 240ms ease;
+	-moz-transition: all 240ms ease;
+	-ms-transition: all 240ms ease;
+	transition: all 240ms ease;
+}
+form input.text::-webkit-input-placeholder,
+form textarea.text::-webkit-input-placeholder {
+	color: #a9a9a9;
+}
+form input.text:-moz-placeholder,
+form textarea.text:-moz-placeholder {
+	color: #6e6e6e;
+}
+form input.text::-moz-placeholder,
+form textarea.text::-moz-placeholder {
+	color: #6e6e6e;
+}
+form input.text:-ms-input-placeholder,
+form textarea.text:-ms-input-placeholder {
+	color: #a9a9a9;
+}
+form input.text::-ms-input-placeholder,
+form textarea.text::-ms-input-placeholder {
+	color: #a9a9a9;
+}
+form input.text:focus,
+form textarea.text:focus {
+	border-color: #28f;
+	box-shadow: 0 0 5px #75a8eb, inset 1px 1px 2px #eee;
+}
+form input.text[disabled],
+form textarea.text[disabled],
+form input.text.disabled,
+form textarea.text.disabled {
+	background: #ededed;
+	color: #999;
+}
+form input.text[disabled]:focus,
+form textarea.text[disabled]:focus,
+form input.text.disabled:focus,
+form textarea.text.disabled:focus {
+	border-color: #ccc;
+	box-shadow: inset 1px 1px 2px #eee;
+}
+form input.text {
+	font-size: inherit;
+}
+form textarea.text {
+	resize: vertical;
+}
+form .fields {
+	zoom: 1;
+}
+form .fields:before,
+form .fields:after {
+	content: "";
+	display: table;
+}
+form .fields:after {
+	clear: both;
+}
+form label.field {
+	clear: both;
+	display: block;
+	padding: 6px 0 12px 0;
+	width: 100%;
+}
+form label.field strong {
+	color: #5d6974;
+	display: block;
+	font-weight: normal;
+	padding: 0 0 6px 0px;
+}
+form label.field small.note {
+	color: #5d6974;
+	display: block;
+	padding: 6px 0 0;
+}
+form label.field.small {
+	clear: none;
+	float: left;
+	width: 47%;
+}
+form label.field.small.first {
+	margin-right: 6%;
+}
+form label.field.invalid input.text {
+	border-color: #d93236;
+	box-shadow: 0 0 5px #de4b4f, inset 1px 1px 2px #eee;
+}
+form .hidden {
+	display: none;
+}

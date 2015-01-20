@@ -1,0 +1,43 @@
+introverts.o: introverts.cc /usr/class/cs110/local/include/ostreamlock.h \
+ /usr/class/cs110/local/include/thread-utils.h
+greeters.o: greeters.cc /usr/class/cs110/local/include/ostreamlock.h \
+ /usr/class/cs110/local/include/thread-utils.h
+tickets.o: tickets.cc /usr/class/cs110/local/include/random-generator.h \
+ /usr/class/cs110/local/include/ostreamlock.h \
+ /usr/class/cs110/local/include/thread-utils.h
+dining-philosophers-with-deadlock.o: dining-philosophers-with-deadlock.cc \
+ /usr/class/cs110/local/include/ostreamlock.h \
+ /usr/class/cs110/local/include/random-generator.h \
+ /usr/class/cs110/local/include/thread-utils.h
+dining-philosophers-with-busy-waiting.o: \
+ dining-philosophers-with-busy-waiting.cc \
+ /usr/class/cs110/local/include/ostreamlock.h \
+ /usr/class/cs110/local/include/random-generator.h \
+ /usr/class/cs110/local/include/thread-utils.h
+dining-philosophers-with-condition-variable.o: \
+ dining-philosophers-with-condition-variable.cc \
+ /usr/class/cs110/local/include/ostreamlock.h \
+ /usr/class/cs110/local/include/random-generator.h \
+ /usr/class/cs110/local/include/thread-utils.h
+dining-philosophers-with-semaphore.o: \
+ dining-philosophers-with-semaphore.cc \
+ /usr/class/cs110/local/include/semaphore.h \
+ /usr/class/cs110/local/include/ostreamlock.h \
+ /usr/class/cs110/local/include/thread-utils.h \
+ /usr/class/cs110/local/include/random-generator.h
+reader-writer.o: reader-writer.cc \
+ /usr/class/cs110/local/include/ostreamlock.h \
+ /usr/class/cs110/local/include/random-generator.h \
+ /usr/class/cs110/local/include/semaphore.h \
+ /usr/class/cs110/local/include/thread-utils.h
+myth-buster-sequential.o: myth-buster-sequential.cc myth-buster-service.h \
+ /usr/class/cs110/local/include/string-utils.h
+myth-buster-concurrent.o: myth-buster-concurrent.cc myth-buster-service.h \
+ /usr/class/cs110/local/include/ostreamlock.h \
+ /usr/class/cs110/local/include/semaphore.h \
+ /usr/class/cs110/local/include/string-utils.h
+ice-cream-store.o: ice-cream-store.cc \
+ /usr/class/cs110/local/include/semaphore.h \
+ /usr/class/cs110/local/include/ostreamlock.h \
+ /usr/class/cs110/local/include/random-generator.h \
+ /usr/class/cs110/local/include/thread-utils.h

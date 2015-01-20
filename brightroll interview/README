@@ -1,0 +1,25 @@
+Task: Code a basic in browser game using jquery
+
+Information:
+------------
+This is an open test. You can use google, books and even phone a friend. There is no penalty for asking questions. We encourage you to ask questions freely.
+
+This test will be using javascript's jquery library (already supplied in the html file) to create a simple, playable game. For this code simulation, it is highly recommended you use a recent version of Google Chrome or Mozilla Firefox
+
+A good reference to start would be jquery's event documentation.
+
+Objective:
+----------
+By the end of the test, we should be able to render the game grid, draw images to it, and listen to user input and simulate basic gameplay. There are six milestones for this test that break down as so:
+
+--Game Setup--
+1) When the start game button is clicked, the render function should be called and the button should subsequently become unclickable.
+2) After the board has been rendered, add the ruby class to a random cell on the grid.
+
+--Game Mechanics--
+3) When a user presses an arrow key, we should move the python one tile in that direction if possible (not against a wall).
+4) The user should see an alert when the python moves onto the same tile as the ruby notifying them of how many moves it took for them to catch the ruby.
+5) If the user does not move onto a ruby tile, the turn should end with the ruby moving one tile in a direction away from the python (e.g. if the python is to a cell to the top right, move either to the left or down). Extra points are awarded for smarter movement strategies.
+
+--Customization--
+6) Before the game starts, a user should be able to use a custom image instead of the python image using the upload file button.

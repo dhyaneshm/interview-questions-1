@@ -1,0 +1,4 @@
+segfault.o: segfault.c
+loop.o: loop.c
+signal-experiment.o: signal-experiment.c
+kill-puzzle.o: kill-puzzle.c

@@ -1,0 +1,64 @@
+<div class="container">
+	<div class="signup-container">
+		<h2>Create a Guizlet Account</h2>
+
+		<div class="errors-container">
+			<div class="errors">
+				<% if errors.size > 0 %>
+						<strong>There were errors creating your account</strong>
+							<% errors.each do |error| %>
+								<div class="error"><%= error %></div>
+							<% end %>
+				<% end %>
+			</div>
+		</div>
+
+		<form class="signup" action="/signup" method="POST">
+			<label>
+				<strong>Username</strong>
+				<input type="text" class="text" name="username" value="<%= params[:username] %>" />
+			</label>
+
+			<label>
+				<strong>Email</strong>
+				<input type="text" class="text" name="email" value="<%= params[:email] %>" />
+			</label>
+
+			<label>
+				<strong>Password</strong>
+				<input type="password" class="text" name="password" />
+			</label>
+
+			<label>
+				<strong>Retype Password</strong>
+				<input type="password" class="text" name="password_repeat" />
+			</label>
+
+			<label>
+				<input type="checkbox" class="tos" name="tos" value="agree" <%= params[:tos] ? 'checked="checked"' : '' %> />
+				I agree to the <a href="http://quizlet.com/tos" target="_blank" title="Open the Terms of Service in a new window">Terms of Service</a>
+			</label>
+
+			<div class="actions">
+				<button type="submit" class="signup button">Sign Up</button>
+			</div>
+
+		</form>
+
+	</div>
+	<div class="signup-meta left">
+
+		<p>
+			<a href="//privacy.truste.com/privacy-seal/Quizlet-LLC/validation?rid=7709ab3e-ab1e-495b-80fc-472f4c5b1236" class="truste" title="TRUSTe Children privacy certification" target="_blank">
+				<img src="//privacy-policy.truste.com/privacy-seal/Quizlet-LLC/seal?rid=7709ab3e-ab1e-495b-80fc-472f4c5b1236" width="116" height="45" alt="TRUSTe Children privacy certification"></a>
+			<a href="http://quizlet.com/privacy" target="_blank">View our full privacy policy</a>
+		</p>
+
+
+		<p>The Guizlet service is <strong>free</strong> and open to <strong>all ages</strong>. Please use it with respect and civility.</p>
+
+		<p>Guizlet will never share your email information with <strong>any</strong> third parties. We <strong>hate spam</strong> just as much as you do.</p>
+		<cite class="signup-cite">— Gandrew Gutherland<br>Guizlet Founder</cite>
+
+	</div>
+</div>

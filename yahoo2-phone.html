@@ -1,0 +1,79 @@
+<head>
+    <style>
+        .results:nth-child(odd) {
+            background-color: blue;
+        }
+        .results:nth-child(even) {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="search"/>
+    ...
+    <script id="search-results-template" type="text/handlebars-template">
+        <ul class="results">
+        {{#each result}}
+            <li class="result" data-id="{{result.id}}">
+                <div class="from">{{result.from}}</div>
+                <div class="subject">{{result.subject}}</div>
+                <div class="date"><small>{{result.date}}</small></div>
+                <div class="delete">x</div>
+            </li>
+        {{/each}}
+        </ul>
+    </script>
+    
+    <script>
+
+        /* 
+        Create a search for yahoo mail using the api call below and display results in a table with from subject, and date
+        mail.yahoo.com/search?q=<query>: returns a JSON object in the following format:
+
+        Odd rows - red
+        Even rows - Blue
+
+        [
+         {
+           'from': 'A',
+           'subject': 'My Subject',
+           'date': '01/01/2010'
+         },
+         
+         {
+            'from': 'B',
+           'subject': 'My Subject',
+           'date': '01/01/2010'
+         }
+        ]
+        */
+        //handle all javascript logic
+        var renderResults = Handlebars.compile($('#search-results-template'));
+        var MAIL_API_URL = "mail.yahoo.com/search?q="
+        $("#search").on("keyup", function() {
+            q = this.value();
+            if (len(q)>0) {
+                $.ajax("GET", MAIL_API_URL+q, function(response) {
+                    if(response.statusCode === 200) {
+                        var results = JSON.parse(response.responseText);
+                        $("body").append(renderResults(results));
+                    } else {
+                        console.log("error!");
+                    }
+                });
+            }
+        });
+        
+        //event delagation
+        $(".results").on('click', function(event) {
+            if (event.target.className === "delete") {
+                $parent = $(event.target).parent()
+                var toDelete = $parent.attr('data-id');
+                deleteItem(toDelete); //not implemented
+            }
+        });
+        
+    </script>
+    
+</body>

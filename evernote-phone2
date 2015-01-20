@@ -1,0 +1,42 @@
+# hashes
+# key -> values
+# O(n) time when you have terrible hashing function
+
+# abstract classes vs. interfaces
+# interfaces are just a bunch of signatures (method stubs)
+# can't declare variables in an interface
+
+# merge sort problem
+
+# Technical Question:
+
+[1, 0, 3, 4] -> [24, 12, 8, 6]
+[1, 1, 0, 0] #first iteration one way
+[0, 12, 4, 1] # second iteration reverse way
+[0, 12, 0, 0]
+
+def anti_product(arr):
+    #edge cases
+    if (len(arr) <=1):
+        return []
+    
+    product_so_far = 1
+    #forward direction
+    product_forward = [product_so_far]
+    for val in range(len(arr)-1):
+        product_so_far *= val
+        product_forward.append(product_so_far)
+    
+    product_so_far = 1
+    product_backwards = [product_so_far]
+    for val in range(len(arr)-1, reverse=True):
+        product_so_far *= val
+        product_backwards.append(product_so_far)
+    
+    product_backwards = reversed(product_backwards)
+    
+    result = []
+    for i, val in enumerate(product_forwards):
+        result.append(val*product_backwards[i])
+    
+    return result

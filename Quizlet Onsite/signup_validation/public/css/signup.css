@@ -1,0 +1,103 @@
+.signup-container {
+	background: #fff;
+	border-radius: 3px;
+	box-shadow: 2px 2px 12px rgba(0,0,0,0.1),1px 1px 4px rgba(0,0,0,0.12);
+	float: left;
+	padding: 15px 0 40px;
+	margin: 20px 0;
+	width: 420px;
+}
+
+.signup-container h2 {
+	font: 28px "open sans",opensans-webfont,"lucida grande","lucida sans unicode",arial,sans-serif;
+	text-align: center;
+	margin: 0 0 15px 0;
+	border: 0;
+}
+
+.signup-container label {
+	display: block;
+	margin: 20px 0;
+}
+
+.signup-container label strong {
+	display: inline-block;
+	font: normal 15px "open sans", opensans-webfont, "lucida grande", "lucida sans unicode", arial, sans-serif;
+	margin-right: 10px;
+	text-align: right;
+	width: 150px;
+}
+
+.signup-container input.text {
+	display: inline-block;
+	width: auto;
+}
+
+.signup-container .errors-container {
+	margin: 0 20px;
+}
+
+.errors-container strong {
+	text-align: center;
+}
+
+.signup-container .errors {
+	display: none;
+	border: 1px solid red;
+	padding: 5px;
+}
+
+.signup-container .tos {
+	margin-left: 165px;
+}
+
+.signup-container .signup.button {
+	margin-left: 165px;
+	margin-top: 20px;
+	padding: 0 16px;
+	line-height: 36px;
+	font-size: 16px;
+}
+
+.signup-container .errors_container {
+	margin-left: 165px;
+	display: none;
+}
+
+.signup-container .errors .errors_container {
+	display: block;
+}
+
+.signup-container .error {
+	color: red;
+	margin: 5px 0;
+}
+
+
+.signup-meta {
+	float: left;
+	width: 220px;
+	margin-left: 10px;
+	padding: 20px;
+}
+
+.signup-meta h3 {
+	font: 22px "open sans",opensans-webfont,"lucida grande","lucida sans unicode",arial,sans-serif;
+	margin-bottom: 10px;
+}
+
+.signup-meta p {
+	margin-bottom: 25px;
+	line-height: 1.5;
+}
+
+.signup-meta .truste {
+	display: block;
+}
+
+.signup-cite {
+	display: block;
+	font: italic 1.2em/1.4 georgia, "times new roman", times, serif;
+	margin-bottom: 0.5em;
+	text-align: right;
+}

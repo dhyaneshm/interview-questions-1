@@ -1,0 +1,132 @@
+/** Create a tree type and determine if a given tree is unival.
+  *
+  * A tree is unival if for all nodes in the tree, they have the same value.
+  */
+  
+/** Given a tree, determine the number of sub-trees which are unival. */    
+  
+struct Node {
+    int value;
+    Node* left;
+    Node* right;
+}
+//return true or false depending on unival character of tree
+//DFS, recursive
+
+bool isSameValue(Node* n, int value) {
+    if (n == NULL) return true;
+    if (n->value != value) return false;
+    return isSameValue(root->left, value) && isSameValue(root->right, value);
+}
+
+bool isUnival(Node* root) {
+    if (root == NULL) return true;
+    return isSameValue(root->left, root->value) && isSameValue(root->right, root->value)
+}
+//four cases
+// case 1: left tree unival -> add one
+// case 2: right tree unival -> add one
+// case 3: left and right tree don't match me -> add two
+// case 4: all the univals -> add one
+
+int univalSubTrees(Node *n) {
+    
+    if (isUnival(n)) {
+        return 1;
+    } else {
+        return univalSubTree(n->left) + univalsubTree(n->right);
+    }
+}
+
+
+Elevator:
+    currentFloor #current floor
+    state #string "UP" "DOWN" "OPEN"
+    queue #requests made of this elevator
+    METHODS:
+        assign(floor) 
+        #returns true if successfully added to this elevator otherwise returns false and doesn't add to the queue
+    
+Building:
+    request(floorNumber, direction) 
+    # first look for OPEN elevators
+    # then look for elevators on the way to that floor
+    # otherwise, find elevator with least number of requests and add the request to that elevator
+    
+class Building:
+    def request(floor, direction):
+        minDist = float('inf')
+        bestOpenElevator = None
+        
+        for e in elevators:
+            if e.state == "OPEN":
+                if (e.currentFloor - floor) < minDist:
+                    bestOpenElevator = e
+                    minDist = (e.currentFloor - floor)
+        if bestOpenElevator!=None:
+            return bestOpenElevator
+            
+        minRequests = float('inf')
+        bestElevator = None
+        
+        minDist = float('inf')
+        bestOnTheWay = None
+        
+        for e in elevators:
+            if (e.state == direction and (e.currentFloor >= floor and e.state=="DOWN") or (e.currentFloor <= floor and e.state=="UP")):
+                if (abs(e.currentFloor - floor) < minDist):
+                    minDist = abs(e.currentFloor - floor)
+                    bestOnTheWay = e
+            if (len(e.queue) < minRequests):
+                bestElevator = e
+                minRequest = len(e.queue)
+
+        if (bestOnTheWay):
+            return bestOnTheWay
+        return bestElevator
+        
+class Elevator:
+    self.currentFloor = 0
+    self.state = "OPEN"
+    self.queue = []
+    self.unprocessed = [] #unprocessed floor requests becuase the elevator is not on the way to these floors
+    
+    #assuming
+    def assign(floor):
+        #reassiging unprocessed when state is down
+        if (self.state = "UP" and self.queue == []):
+            if (self.unprocessed != []):
+                self.state = "DOWN"
+                #sorts descending because the elevator is going down
+                self.queue = sorted(self.unprocessed, reversed = True) 
+                
+            else:
+                self.state = "OPEN"
+        
+        #reassiging unprocessed when state is down
+        if (self.state = "DOWN" and self.queue == []):
+            if (self.unprocessed != []):
+                self.state = "UP"
+                #sorts descending because the elevator is going down
+                self.queue = sorted(self.unprocessed) 
+            else:
+                self.state = "OPEN"
+        
+        if (self.state == "OPEN")
+            self.queue.append(floor)
+            self.state = "UP" if self.currentFloor < floor else self.state = "DOWN"
+            
+        else if (self.state == "UP'):
+            if (floor > currentFloor):
+                self.queue.append(floor)
+                sort(self.queue)
+            else:
+                self.unprocessed.append(floor)
+        else: #down case
+            if (floor < currentFloor):
+                self.queue.append(floor)
+                sort(self.queue)
+            else:
+                self.unprocessed.append(floor)
+        
+    

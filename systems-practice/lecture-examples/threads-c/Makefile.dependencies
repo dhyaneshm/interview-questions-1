@@ -1,0 +1,3 @@
+introverts.o: introverts.c
+broken-extroverts.o: broken-extroverts.c
+extroverts.o: extroverts.c

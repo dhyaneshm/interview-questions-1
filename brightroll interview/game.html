@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Jquery is included here and available for use -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- some basic styles for game setup -->
+    <style>
+      .viewport {
+        height: 500px;
+        width: 500px;
+        border: 1px solid black;
+        margin-bottom: 10px;
+        display: none;
+      }
+      .row {
+        display: table-row;
+      }
+      .game-space {
+        border: 1px dotted gray;
+        width: 50px;
+        height: 50px;
+        display: table-cell;
+      }
+      .ruby {
+        background-image: url(ruby.png);
+        background-repeat: no-repeat;
+        background-size: 40px 25px;
+        background-position: 4px 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="start_game">Start Game</button>
+    <div class="viewport"></div>
+    <div class="form">
+      <!-- File picker will only work with modern browsers! -->
+      <input type="file" />
+    </div>
+  </body>
+</html>
+
+<script>
+
+$window = $(window);
+//Render function is provided to draw the game board
+var render = function() {
+  $('.viewport').css('display', 'table');
+  var html = "";
+  var randI = Math.floor((Math.random() * 10));
+  var randJ = Math.floor((Math.random() * 10));
+  for(var i=0; i<10; i++) {
+    html += "<div class='row'>";
+
+    
+
+    for(var j=0; j<10; j++) {
+      html += "<div class='game-space python' id="+i+""+j+">";
+      if(i === 0 && j === 0) {
+        html += "<img src='python.png' height=45 width=45>";
+        html += "<div id='python'></div>"
+      }
+      //place ruby
+      if(i === randI && j === randJ) {
+        console.log(i,j);
+        html += "<div id='ruby'></div>"
+        html += "<img src='ruby.png' height=45 width=45>";
+      } 
+      html += "</div>";
+    }
+    html += "</div>";
+  }
+  $('.viewport').html(html);
+}
+//helper functions
+var getPCell = function() {
+  return $("#python").parent();
+}
+var getRCell = function() {
+  return $("#ruby").parent();
+}
+
+var getP = function() {
+  return $("#python").parent().attr('id').split("");
+}
+
+var getR = function() {
+  return $("#ruby").parent().attr('id').split("");
+}
+
+//renders game
+$("#start_game").click(function() {
+  render();
+});
+
+var moves = 0;
+//keybinding
+$window.on("keyup", function(e) {
+  if ($('.viewport').html() !== "") {
+
+    var possibleMoves = [moveLeft, moveUp, moveRight, moveDown];
+    if (e.keyCode === 37) {//LEFT
+      var curMove = moveLeft(getR(), getRCell());
+      if (curMove===false) {
+        var curTry = 0;
+        while(possibleMoves[(curTry+1)%4](getR(),getRCell()) === false) {
+          console.log(possibleMoves[(curTry+1)%4]);
+          curTry += 1;
+        }
+      } 
+      moveLeft(getP(), getPCell());
+    }
+
+    if (e.keyCode === 39) {//RIGHT
+      var curMove = moveRight(getR(), getRCell());
+      if (curMove===false) {
+        var curTry = 2;
+        while(possibleMoves[(curTry+1)%4](getR(),getRCell()) === false) {
+          console.log(possibleMoves[(curTry+1)%4]);
+          curTry += 1;
+        }
+      }  
+        moveRight(getP(), getPCell());
+    }
+    if (e.keyCode === 38) {//UP
+      var curMove = moveUp(getR(), getRCell());
+      if (curMove===false) {
+        var curTry = 1;
+        while(possibleMoves[(curTry+1)%4](getR(),getRCell()) === false) {
+          console.log(possibleMoves[(curTry+1)%4]);
+          curTry += 1;
+        }
+      } 
+        moveUp(getP(), getPCell());  
+       
+    }
+    if (e.keyCode === 40) {//DOWN
+      var curMove = moveDown(getR(), getRCell());
+      if (curMove===false) {
+        var curTry = 3;
+        while(possibleMoves[(curTry+1)%4](getR(),getRCell()) === false) {
+          console.log(possibleMoves[(curTry+1)%4]);
+          curTry += 1;
+        }
+      } 
+      moveDown(getP(), getPCell()); 
+    }
+    moves+=1;
+    //check if ruby is still defined
+    if (getRCell().length === 0 || getPCell().length === 0){
+      alert("you won with "+moves+" moves!");
+    }
+  }
+});
+
+
+var moveLeft = function(curLoc, curCell) {
+  if (curLoc[1] === "0") return false;
+  var nextCol = (parseInt(curLoc[1])-1).toString();
+  var nextCell = $("#"+curLoc[0]+nextCol);
+  nextCell.html(curCell.html());
+  curCell.html("");
+  return true;
+}
+var moveRight = function(curLoc, curCell) {
+  if (curLoc[1] === "9") return false;
+  var nextCol = (parseInt(curLoc[1])+1).toString();
+  var nextCell = $("#"+curLoc[0]+nextCol);
+  nextCell.html(curCell.html());
+  curCell.html("");
+  return true;
+}
+var moveDown = function(curLoc, curCell) {
+  if (curLoc[0] === "9") return false;
+  var nextRow = (parseInt(curLoc[0])+1).toString();
+  var nextCell = $("#"+nextRow+curLoc[1]);
+  nextCell.html(curCell.html());
+  curCell.html("");
+  return true;
+}
+var moveUp = function(curLoc, curCell) {
+  if (curLoc[0] === "0") return false;
+  var nextRow = (parseInt(curLoc[0])-1).toString();
+  var nextCell = $("#"+nextRow+curLoc[1]);
+  nextCell.html(curCell.html());
+  curCell.html("");
+  return true;
+}
+
+
+//Your code here. Good luck!
+</script>
